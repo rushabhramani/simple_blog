@@ -1,0 +1,26 @@
+<h1>Listing comments</h1>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.post_id %></td>
+        <td><%= comment.description %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment), :class=>"btn btn-default" %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Comment', new_comment_path %>
